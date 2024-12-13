@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+    #userType {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: #fff;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23999' d='M2 0L0 2h4z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 10px;
+    cursor: pointer;
+}
+
+#userType:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+        .signup-container {
+            width: 400px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .signup-container h2 {
+            margin: 0 0 20px;
+            font-size: 1.5em;
+            color: #007bff;
+            text-align: center;
+        }
+
+        .signup-container label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .signup-container input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+
+        .signup-container button {
+            width: 100%;
+            padding: 10px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+
+        .signup-container button:hover {
+            background: #0056b3;
+        }
+
+        .error {
+            color: red;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <h2>Signup</h2>
+        <form id="signupForm">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+            
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            
+            <label for="phone">Phone</label>
+            <input type="text" id="phone" name="phone" placeholder="Enter your 10-digit phone number" required>
+            
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Create a password" required>
+            
+            <label for="rePassword">Confirm Password</label>
+            <input type="password" id="rePassword" name="rePassword" placeholder="Re-enter your password" required>
+            <label for="userType">User Type</label>
+            <select id="userType" name="userType" required>
+                <option value="" disabled selected>Select</option>
+                <option value="student">Student</option>
+                <option value="teacher">Teacher</option>
+            </select>
+            
+            <div class="error" id="error"></div>
+            <button type="submit">Create Account</button>     
+ 
+              
+         </form>
+    </div>
+
+    <script>
+        document.getElementById("signupForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent the form from submitting traditionally
+
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const phone = document.getElementById("phone").value.trim();
+            const password = document.getElementById("password").value;
+            const rePassword = document.getElementById("rePassword").value;
+            const errorElement = document.getElementById("error");
+
+            // Clear previous errors
+            errorElement.textContent = "";
+
+            // Validate phone number
+            if (!/^[0-9]{10}$/.test(phone)) {
+                errorElement.textContent = "Phone number must be exactly 10 digits.";
+                return;
+            }
+
+            // Validate passwords
+            if (password !== rePassword) {
+                errorElement.textContent = "Passwords do not match.";
+                return;
+            }
+
+            // Proceed with signup logic (e.g., sending data to the server)
+            const signupData = {
+                name,
+                email,
+                phone,
+                password,
+            };
+
+            console.log("Signup Data:", signupData);
+
+            alert("Signup successful!"); // Replace with actual success handling
+        });
+    </script>
+</body>
+</html>

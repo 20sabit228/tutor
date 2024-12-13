@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            width: 350px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .login-container h2 {
+            margin: 0 0 20px;
+            font-size: 1.5em;
+            color: #007bff;
+            text-align: center;
+        }
+
+        .login-container label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .login-container input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+
+        .login-container button {
+            width: 100%;
+            padding: 10px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+
+        .login-container button:hover {
+            background: #0056b3;
+        }
+
+        .error {
+            color: red;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        .signup-link {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 0.9em;
+        }
+
+        .signup-link a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .signup-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            
+            <div class="error" id="error"></div>
+            <button type="submit">Login</button>
+        </form>
+        <div class="signup-link">
+            Don't have an account? <button onclick="window.location.href='signup.html#';"'>register</button>        </form>
+        </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent the form from submitting traditionally
+
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("password").value;
+            const errorElement = document.getElementById("error");
+
+            // Clear previous errors
+            errorElement.textContent = "";
+
+            // Basic Validation
+            if (!email) {
+                errorElement.textContent = "Email is required.";
+                return;
+            }
+            if (!password) {
+                errorElement.textContent = "Password is required.";
+                return;
+            }
+
+            // Proceed with login logic (e.g., sending data to the server)
+            const loginData = {
+                email,
+                password,
+            };
+
+            console.log("Login Data:", loginData);
+
+            // Simulate success
+            alert("Login successful!"); // Replace with actual success handling
+        });
+    </script>
+</body>
+</html>

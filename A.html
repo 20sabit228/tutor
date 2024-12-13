@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tuition Terminal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #007bff;
+            color: #fff;
+            padding: 20px 30px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background: #0056b3;
+            padding: 10px 0;
+        }
+
+        nav a {
+            color: #fff;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .auth-buttons {
+            display: flex;
+            align-items: center;
+        }
+
+        .auth-buttons button {
+            margin-left: 15px;
+            padding: 10px 15px;
+            background: #fff;
+            color: #007bff;
+            border: none;
+            border-radius: 4px;
+            font-size: 0.9em;
+            cursor: pointer;
+        }
+
+        .auth-buttons button:hover {
+            background: #e0e0e0;
+        }
+
+        .hero {
+            background: url('./a.jpg') no-repeat center center/cover;
+            color: rgb(139, 8, 8);
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .hero h2 {
+            font-size: 2.5em;
+            margin: 0 0 20px;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            margin: 0 0 30px;
+        }
+
+        .hero button {
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+
+        .hero button:hover {
+            background: #0056b3;
+        }
+
+        .course-title {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: #fff;
+        }
+
+        .course-title h2 {
+            margin: 0;
+            font-size: 2.2em;
+            color: #333;
+        }
+
+        .courses {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+
+        .course {
+            flex: 1 1 calc(30% - 20px);
+            background: #f9f9f9;
+            margin: 10px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .course h3 {
+            margin-bottom: 10px;
+            font-size: 1.4em;
+            color: #007bff;
+        }
+
+        .course p {
+            font-size: 1em;
+            margin-bottom: 15px;
+        }
+
+        .course button {
+            padding: 8px 12px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 0.9em;
+            cursor: pointer;
+        }
+
+        .course button:hover {
+            background: #0056b3;
+        }
+
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Care Tutor</h1>
+        <div class="auth-buttons">
+            <button id="profileBtn" style="display: none;">My Profile</button>
+            <button id="loginBtn">Login</button>
+            <button id="signupBtn">Register</button>
+        </div>
+    </header>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Courses</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+    </nav>
+    <section class="hero">
+        <h2>Learn from the Best Tutors</h2>
+        <p>Join thousands of students achieving their goals with Tuition Terminal</p>
+        <button>Get Started</button>
+    </section>
+
+    <!-- Course Title Section -->
+    <section class="course-title">
+        <h2>Our Popular Courses</h2>
+    </section>
+
+    <!-- Dummy Course List -->
+    <section class="courses">
+        <div class="course">
+            <h3>Mathematics Basics</h3>
+            <p>Master the fundamentals of mathematics with expert tutors.</p>
+            <button>View Details</button>
+        </div>
+        <div class="course">
+            <h3>Physics for Beginners</h3>
+            <p>Understand the basics of physics with hands-on examples.</p>
+            <button>View Details</button>
+        </div>
+        <div class="course">
+            <h3>Intro to Programming</h3>
+            <p>Learn programming with Python for absolute beginners.</p>
+            <button>View Details</button>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Tuition Terminal. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Simulate login state (replace with real authentication logic)
+        const isLoggedIn = true; // Change to `true` if user is logged in.
+
+        const profileBtn = document.getElementById('profileBtn');
+        const loginBtn = document.getElementById('loginBtn');
+        const signupBtn = document.getElementById('signupBtn');
+
+        if (isLoggedIn) {
+            // User is logged in: show "My Profile" and hide "Login" and "Register"
+            profileBtn.style.display = 'block';
+            loginBtn.style.display = 'none';
+            signupBtn.style.display = 'none';
+
+            profileBtn.onclick = () => {
+                window.location.href = 'profile.html'; // Redirect to profile page
+            };
+        } else {
+            // User is not logged in: show "Login" and "Register", hide "My Profile"
+            profileBtn.style.display = 'none';
+
+            loginBtn.onclick = () => {
+                window.location.href = 'in.html'; // Redirect to login page
+            };
+
+            signupBtn.onclick = () => {
+                window.location.href = 'signup.html'; // Redirect to signup page
+            };
+        }
+    </script>
+</body>
+</html>
