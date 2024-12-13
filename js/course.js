@@ -1,5 +1,5 @@
 function fetchCourses() {
-  fetch("http://localhost:3000/api/tutor")
+    fetch("http://localhost:3000/api/courses")
     .then((response) => response.json())
     .then((courses) => {
 
@@ -21,6 +21,5 @@ function fetchCourses() {
       });
     })
     .catch((error) => console.error("Error fetching courses:", error));
-}
-
+  }
 fetchCourses();

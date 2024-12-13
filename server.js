@@ -26,7 +26,7 @@ db.connect((err) => {
 });
 
 // Route to fetch all courses
-app.get('/api/tutor', (req, res) => {
+app.get('/api/courses', (req, res) => {
     const query = 'SELECT title, description, rating, price, instructor FROM courses';
     db.query(query, (err, results) => {
         if (err) {

@@ -3,73 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/card-payment.css">
+    <script src="./js/card-payment.js" defer></script>
     <title>Card Payment</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f9;
-        }
-        .header {
-            background-color: #007bff;
-            color: #fff;
-            padding: 15px;
-            text-align: center;
-        }
-        .payment-section {
-            max-width: 400px;
-            margin: 50px auto;
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-        }
-        .payment-section h2 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #333;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-        .form-group input {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        .form-group button {
-            width: 100%;
-            padding: 10px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-        .form-group button:hover {
-            background-color: #0056b3;
-        }
-        .success-message {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 16px;
-            color: green;
-            display: none;
-        }
-        .error-message {
-            color: red;
-            font-size: 14px;
-            margin-top: 5px;
-            display: none;
-        }
+
     </style>
 </head>
 <body>
@@ -103,45 +41,7 @@
     </div>
 
     <script>
-        const cardInput = document.getElementById('card-number');
-        const pinInput = document.getElementById('card-pin');
-        const payNowButton = document.getElementById('pay-now');
-        const cardError = document.getElementById('card-error');
-        const pinError = document.getElementById('pin-error');
-        const successMessage = document.getElementById('success-message');
 
-        payNowButton.addEventListener('click', function () {
-            // Reset error states
-            cardError.style.display = 'none';
-            pinError.style.display = 'none';
-
-            const cardNumber = cardInput.value.trim();
-            const pin = pinInput.value.trim();
-
-            let isValid = true;
-
-            // Validate card number (must be 13 digits)
-            if (!/^\d{13}$/.test(cardNumber)) {
-                cardError.style.display = 'block';
-                isValid = false;
-            }
-
-            // Validate PIN (must be 4 digits)
-            if (!/^\d{4}$/.test(pin)) {
-                pinError.style.display = 'block';
-                isValid = false;
-            }
-
-            // If valid, display success message
-            if (isValid) {
-                successMessage.style.display = 'block';
-
-                // Optionally, redirect or handle further logic here
-                setTimeout(() => {
-                    window.location.href = 'payment-success.html';
-                }, 2000); // Redirect after 2 seconds
-            }
-        });
     </script>
 </body>
 </html>

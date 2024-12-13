@@ -1,5 +1,5 @@
 // Simulate login state (replace with real authentication logic)
-const isLoggedIn = true; // Change to `true` if user is logged in.
+const isLoggedIn = false; // Change to `true` if user is logged in.
 
 const profileBtn = document.getElementById("profileBtn");
 const loginBtn = document.getElementById("loginBtn");
