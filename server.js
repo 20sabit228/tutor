@@ -36,7 +36,7 @@
             res.json(results);
         });
     });
-
+    //signup
     app.post("/signup", (req, res) => {
         const { name, email, phone, password, userType } = req.body;
 
@@ -94,24 +94,26 @@
         }
     });
     // Route to add a new course
-    app.post('http://localhost:3000/add-course', (req, res) => {
+    app.post('/add-course', (req, res) => {
         const { title, description, rating, price, instructor } = req.body;
-
+    
         // Validate input
-        if (!title || !description || !rating || !price || !instructor) {
-            return res.status(400).json({ success: false, message: "All fields are required." });
+        if (!title || !description || rating || !price || !instructor) {
+            return res.status(200).json({ success: false, message: "All fields are required." });
         }
-
-        const query = 'INSERT INTO courses (title, description, rating, price, instructor) VALUES (?, ?, ?, ?, ?)';
-        
-        db.query(query, [title, description, rating, price, instructor], (err, result) => {
+    
+        const sql = 'INSERT INTO courses (title, description, rating, price, instructor) VALUES (?, ?, ?, ?, ?)';
+    
+        db.query(sql, [title, description, rating, price, instructor], (err, result) => {
             if (err) {
                 console.error("Error inserting course:", err);
-                return res.status(500).json({ success: false, message: "Failed to add course." });
+                return res.status(400).json({ success: false, message: "Failed to add course." });
             }
-            res.json({ success: true });
+            res.send("Course added successfully:"); // Log successful insert
+          //  res.json({ success: true, message: "Course added successfully!" });
         });
     });
+    
     // Start the server
     app.listen(PORT, () => {
         console.log(`Server is running on http://localhost:${PORT}`);

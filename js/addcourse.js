@@ -1,5 +1,8 @@
-document.getElementById("addCourseForm").addEventListener("submit", async function(event) {
-    event.preventDefault();
+
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('addcourseform');
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
 
     const title = document.getElementById("title").value.trim();
     const description = document.getElementById("description").value.trim();
@@ -12,7 +15,7 @@ document.getElementById("addCourseForm").addEventListener("submit", async functi
     errorElement.textContent = "";
 
     // Validate the form data
-    if (!title || !description || !rating || !price || !instructor) {
+    if (!title || !description || rating || !price || !instructor) {
         errorElement.textContent = "All fields are required.";
         return;
     }
@@ -25,7 +28,7 @@ document.getElementById("addCourseForm").addEventListener("submit", async functi
         instructor
     };
 
-    fetch("http://localhost:3000/addcourse", {
+    fetch('http://localhost:3000/add-course', {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -45,4 +48,4 @@ document.getElementById("addCourseForm").addEventListener("submit", async functi
             console.error("Error:", error);
             errorElement.textContent = "Failed to add course.";
         });
-});
+    })});

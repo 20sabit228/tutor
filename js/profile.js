@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
     userTypeElement.textContent = userType;
     console.log(name)
    // Logout functionality
+   console.log(userType)
     if (userType=='teacher'){
         addcourse.style.display = "block"
     }
@@ -25,14 +26,13 @@ document.addEventListener("DOMContentLoaded", () => {
         addcourse.style.display = "none"
     }
     logoutBtn.addEventListener("click", () => {
-        // Clear localStorage
+        // Clear login state and user data
         localStorage.removeItem("loggedIn");
         localStorage.removeItem("username");
         localStorage.removeItem("email");
-        localStorage.removeItem("phone");
-        localStorage.removeItem("userType");
 
-        // Redirect to the login page
-        window.location.href = "in.html";
+        // Redirect to login page
+        window.location.href = "in.html"; // Update with your login page URL
+
     });
 });
