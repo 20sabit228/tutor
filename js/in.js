@@ -1,4 +1,4 @@
-document.getElementById("loginForm").addEventListener("submit", function(event) {
+document.getElementById("loginForm").addEventListener("submit", async function(event) {
     event.preventDefault(); // Prevent the form from submitting traditionally
 
     const email = document.getElementById("email").value.trim();
@@ -18,14 +18,41 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
         return;
     }
 
-    // Proceed with login logic (e.g., sending data to the server)
-    const loginData = {
-        email,
-        password,
-    };
+    // Prepare login data
+    const loginData = { email, password };
 
-    console.log("Login Data:", loginData);
+    try {
+        // Send login data to the server
+        const response = await fetch("http://localhost:3000/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(loginData),
+        });
 
-    // Simulate success
-    alert("Login successful!"); // Replace with actual success handling
+        if (!response.ok) {
+            throw new Error("Network response was not ok");
+        }
+
+        const result = await response.json();
+
+        if (result.success) {
+            // Save user details to localStorage
+            localStorage.setItem("loggedIn", "true");
+            localStorage.setItem("username", result.username);
+            localStorage.setItem("email", email);
+            localStorage.setItem("phone", result.phone);
+            localStorage.setItem("userType", result.userType);
+
+            // Redirect to the homepage
+            window.location.href = "/index.html"; // Update with your actual homepage URL
+        } else {
+            // Show error message
+            errorElement.textContent = result.message || "Invalid credentials.";
+        }
+    } catch (error) {
+        console.error("Error:", error);
+        errorElement.textContent = "An error occurred. Please try again later.";
+    }
 });

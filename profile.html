@@ -1,47 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/profile.css">    
-    <script src="./js/profile.js" defer></script>
-  
-    <title>Profile - Blossom Boutique</title>
-
+    <title>Profile</title>
+    <script src="./js/profile.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+        }
+        .profile-container {
+            max-width: 400px;
+            margin: auto;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .profile-container h2 {
+            text-align: center;
+        }
+        .profile-field {
+            margin: 10px 0;
+        }
+        .logout-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #f44336;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .logout-btn:hover {
+            background-color: #d32f2f;
+        }
+    </style>
 </head>
-
 <body>
-    <header>
-        <h1>Care Tutor</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Terms of Use</a></li>
-                <li><a href="#">Privacy Policy</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div class="profile-container">
+        <h2>User Profile</h2>
+        <div class="profile-field" id="nameField">Name: <span id="name"></span></div>
+        <div class="profile-field" id="emailField">Email: <span id="email"></span></div>
+        <div class="profile-field" id="phoneField">Phone: <span id="phone"></span></div>
+        <div class="profile-field" id="userTypeField">User Type: <span id="userType"></span></div>
+        <button class="logout-btn" id="logoutBtn">Logout</button>
+        <a href="addcourse.html">Add Course</a>
+    </div>
 
-    <section class="profile-info">
-        <h2>Profile Information</h2>
-        <div class="profile-content">
-            <div id="profileDetails">
-                <p>Loading profile details...</p>
-            </div>
-            <div class="profile-image">
-                <img src="a.jpg" alt="Profile Picture" />
-            </div>
-        </div>
-        <a href="update_profile.html">Update Profile</a>
-        <a href="update_password.html">Update Password</a>
-    </section>
-
-
-    <footer>
-        <p>Contact us at: | &copy; k</p>
-    </footer>
 </body>
-
 </html>

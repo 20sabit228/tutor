@@ -1,28 +1,43 @@
-// Simulate login state (replace with real authentication logic)
-const isLoggedIn = false; // Change to `true` if user is logged in.
+document.addEventListener("DOMContentLoaded", () => {
+  const profileBtn = document.getElementById("profileBtn");
+  const loginBtn = document.getElementById("loginBtn");
+  const signupBtn = document.getElementById("signupBtn");
+  const logoutBtn = document.getElementById("logoutBtn");
 
-const profileBtn = document.getElementById("profileBtn");
-const loginBtn = document.getElementById("loginBtn");
-const signupBtn = document.getElementById("signupBtn");
+  // Check if the user is logged in
+  const isLoggedIn = localStorage.getItem("loggedIn");
 
-if (isLoggedIn) {
-  // User is logged in: show "My Profile" and hide "Login" and "Register"
-  profileBtn.style.display = "block";
-  loginBtn.style.display = "none";
-  signupBtn.style.display = "none";
+  if (isLoggedIn === "true") {
+      // User is logged in: Show "My Profile" and "Logout", hide "Login" and "Sign Up"
+      profileBtn.style.display = "block";
+      logoutBtn.style.display = "block";
+      loginBtn.style.display = "none";
+      signupBtn.style.display = "none";
 
-  profileBtn.onclick = () => {
-    window.location.href = "profile.html"; // Redirect to profile page
-  };
-} else {
-  // User is not logged in: show "Login" and "Register", hide "My Profile"
-  profileBtn.style.display = "none";
+      profileBtn.addEventListener("click", () => {
+          window.location.href = "profile.html"; // Redirect to profile page
+      });
 
-  loginBtn.onclick = () => {
-    window.location.href = "in.html"; // Redirect to login page
-  };
+      logoutBtn.addEventListener("click", () => {
+          // Clear login state and user data
+          localStorage.removeItem("loggedIn");
+          localStorage.removeItem("username");
+          localStorage.removeItem("email");
 
-  signupBtn.onclick = () => {
-    window.location.href = "signup.html"; // Redirect to signup page
-  };
-}
+          // Redirect to login page
+          window.location.href = "in.html"; // Update with your login page URL
+      });
+  } else {
+      // User is not logged in: Show "Login" and "Sign Up", hide "My Profile" and "Logout"
+      profileBtn.style.display = "none";
+      logoutBtn.style.display = "none";
+
+      loginBtn.addEventListener("click", () => {
+          window.location.href = "in.html"; // Redirect to login page
+      });
+
+      signupBtn.addEventListener("click", () => {
+          window.location.href = "signup.html"; // Redirect to signup page
+      });
+  }
+});

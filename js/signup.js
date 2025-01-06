@@ -23,17 +23,7 @@ document.getElementById("signupForm").addEventListener("submit", function (event
         errorElement.textContent = "Passwords do not match.";
         return;
     }
-    // Check if email exists
-    const emailCheckQuery = 'SELECT id FROM customers WHERE email = ?';
-    db.query(emailCheckQuery, [email], (err, results) => {
-        if (err) {
-                console.error('Error checking email: ', err);
-                return res.redirect('/signup?error=Error checking email. Please try again.');
-              }
-  
-        if (results.length > 0) {
-                return res.redirect('/signup?error=Email already registered. Please use a different email.');
-              }
+
     // Prepare the data to send to the server
     const signupData = {
         name,
@@ -64,5 +54,4 @@ document.getElementById("signupForm").addEventListener("submit", function (event
             console.error("Error:", error);
             errorElement.textContent = "Failed to sign up.";
         });
-});
 });

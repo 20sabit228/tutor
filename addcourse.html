@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./js/addcourse.js"></script>
+    <title>Add New Course</title>
+</head>
+<body>
+    <h1>Add a New Course</h1>
+    
+    <form id="addCourseForm">
+        <label for="title">Course Title:</label>
+        <input type="text" id="title" name="title" required><br><br>
+
+        <label for="description">Course Description:</label>
+        <textarea id="description" name="description" required></textarea><br><br>
+
+        <label for="price">Course Price:</label>
+        <input type="number" id="price" name="price" step="0.01" required><br><br>
+
+        <label for="instructor">Instructor Name:</label>
+        <input type="text" id="instructor" name="instructor" required><br><br>
+
+        <button type="submit">Add Course</button>
+    </form>
+
+    <div id="error"></div>
+
+</body>
+</html>

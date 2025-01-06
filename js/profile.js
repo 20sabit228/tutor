@@ -1,32 +1,38 @@
-       // Simulating an API endpoint for user profile details
-       const fetchProfileData = () => {
-        return new Promise((resolve) => {
-            setTimeout(() => {
-                resolve({
-                    name: "John Doe",
-                    email: "johndoe@example.com",
-                    phone: "9876543210",
-                });
-            }, 1000);
-        });
-    };
+document.addEventListener("DOMContentLoaded", () => {
+    const nameElement = document.getElementById("name");
+    const emailElement = document.getElementById("email");
+    const phoneElement = document.getElementById("phone");
+    const userTypeElement = document.getElementById("userType");
+    const logoutBtn = document.getElementById("logoutBtn");
 
-    // Fetch and display profile details
-    document.addEventListener("DOMContentLoaded", async () => {
-        const profileDetails = document.getElementById("profileDetails");
+    // Fetch user data from localStorage (replace this with a server call if needed)
+    const name = localStorage.getItem("username") || "Unknown User";
+    const email = localStorage.getItem("email") || "No email provided";
+    const phone = localStorage.getItem("phone") || "No phone number provided"; // Add phone data on login
+    const userType = localStorage.getItem("userType") || "Standard"; // Default userType
 
-        try {
-            // Fetch profile data
-            const userProfile = await fetchProfileData();
+    // Display user data on the profile page
+    nameElement.textContent = name;
+    emailElement.textContent = email;
+    phoneElement.textContent = phone;
+    userTypeElement.textContent = userType;
+    console.log(name)
+   // Logout functionality
+    if (userType=='teacher'){
+        addcourse.style.display = "block"
+    }
+    else{
+        addcourse.style.display = "none"
+    }
+    logoutBtn.addEventListener("click", () => {
+        // Clear localStorage
+        localStorage.removeItem("loggedIn");
+        localStorage.removeItem("username");
+        localStorage.removeItem("email");
+        localStorage.removeItem("phone");
+        localStorage.removeItem("userType");
 
-            // Display profile data
-            profileDetails.innerHTML = `
-                <p><strong>Name:</strong> ${userProfile.name}</p>
-                <p><strong>Email:</strong> ${userProfile.email}</p>
-                <p><strong>Phone:</strong> ${userProfile.phone}</p>
-            `;
-        } catch (error) {
-            profileDetails.innerHTML = `<p style="color: red;">Failed to load profile details. Please try again later.</p>`;
-            console.error("Error fetching profile data:", error);
-        }
+        // Redirect to the login page
+        window.location.href = "in.html";
     });
+});
