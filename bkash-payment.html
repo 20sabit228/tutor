@@ -25,12 +25,18 @@
                 <div class="error-message" id="phone-error">Phone number must be exactly 11 digits.</div>
             </div>
 
-            <!-- PIN -->
+            <!-- Transaction ID -->
             <div class="form-group">
-                <label for="bkash-pin">Bkash PIN</label>
-                <input type="password" id="bkash-pin" name="bkashPin" placeholder="Enter 4-digit PIN" maxlength="4"
-                    required>
-                <div class="error-message" id="pin-error">PIN must be exactly 4 digits.</div>
+                <label for="transaction-id">Transaction ID</label>
+                <input type="text" id="transaction-id" name="transactionId" placeholder="Enter your Transaction ID" required>
+                <div class="error-message" id="transaction-error">Transaction ID is required.</div>
+            </div>
+
+            <!-- Alternate Payment Options -->
+            <div class="alternate-payment">
+                <p>You can also pay with:</p>
+                <button type="button" id="bank-payment">Bank</button>
+                <button type="button" id="card-payment">Card</button>
             </div>
 
             <!-- Submit Button -->

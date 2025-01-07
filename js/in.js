@@ -40,6 +40,7 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
         if (result.success) {
             // Save user details to localStorage
             localStorage.setItem("loggedIn", "true");
+            localStorage.setItem("userId", result.id);
             localStorage.setItem("username", result.username);
             localStorage.setItem("email", email);
             localStorage.setItem("phone", result.phone);

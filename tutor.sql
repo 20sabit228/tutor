@@ -15,3 +15,14 @@ CREATE TABLE customers (
     password VARCHAR(255) NOT NULL,
     userType ENUM('student', 'teacher') NOT NULL
 );
+CREATE TABLE payment (
+    id INT AUTO_INCREMENT PRIMARY KEY, -- Incremental ID for each payment
+    course_id VARCHAR(255) NOT NULL,            -- Foreign key referencing the course ID
+    username VARCHAR(255) NOT NULL,    -- Foreign key referencing the username from customers table
+    info TEXT,                         -- Additional information about the payment
+    trx VARCHAR(255) NOT NULL,         -- Transaction ID
+    type ENUM('Bkash', 'Card', 'Bank') NOT NULL, -- Payment type
+    approval TINYINT(1) DEFAULT 0,     -- Approval status: 0 (Pending) / 1 (Approved)
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP -- Timestamp of payment creation
+);
+

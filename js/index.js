@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
       logoutBtn.style.display = "block";
       loginBtn.style.display = "none";
       signupBtn.style.display = "none";
+      emergency.style.display='block'
 
       profileBtn.addEventListener("click", () => {
           window.location.href = "profile.html"; // Redirect to profile page
@@ -27,6 +28,9 @@ document.addEventListener("DOMContentLoaded", () => {
           // Redirect to login page
           window.location.href = "in.html"; // Update with your login page URL
       });
+      emergency.addEventListener("click", () => {
+        window.location.href = "http://localhost:3300/"; // Redirect to signup page
+      });
   } else {
       // User is not logged in: Show "Login" and "Sign Up", hide "My Profile" and "Logout"
       profileBtn.style.display = "none";
@@ -39,5 +43,8 @@ document.addEventListener("DOMContentLoaded", () => {
       signupBtn.addEventListener("click", () => {
           window.location.href = "signup.html"; // Redirect to signup page
       });
+      emergency.addEventListener("click", () => {
+        window.location.href = "http://localhost:3300/"; // Redirect to signup page
+    });
   }
 });
