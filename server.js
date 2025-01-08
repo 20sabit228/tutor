@@ -39,8 +39,7 @@
         }
         console.log('Connected to the MySQL database');
     });
-
-    // Route to fetch all courses
+    //fetch couses
     app.get('/api/courses', (req, res) => {
         const query = 'SELECT title, description, rating, price, instructor FROM courses';
         db.query(query, (err, results) => {
@@ -51,6 +50,54 @@
             res.json(results);
         });
     });
+    //get course content
+    app.get('/get-courses', (req, res) => {
+        const query = `
+            SELECT c.title AS course_name, cc.youtube_link, cc.drive_link, cc.google_form_link 
+            FROM courses c 
+            JOIN coursec cc ON c.title = cc.course_name`;
+    
+        db.query(query, (err, results) => {
+            if (err) {
+                console.error('Error fetching courses:', err.message);
+                res.status(500).send('Failed to fetch courses.');
+                return;
+            }
+            res.json(results); // Send the results as JSON to the frontend
+        });
+    });
+    
+    // Route to add a new course
+    app.post('/add-course', (req, res) => {
+        console.log('Received data:', req.body);
+        const { title, description, rating, price, instructor, playlist, material, exam } = req.body;
+
+    // Insert into 'course' table
+        const courseQuery = `INSERT INTO courses (title, description, rating, price, instructor) 
+                        VALUES (?, ?, ?, ?, ?)`;
+        const coursecQuery = `INSERT INTO coursec (course_name, youtube_link, drive_link, google_form_link) 
+                        VALUES (?, ?, ?, ?)`;
+                        db.query(courseQuery, [title, description, rating, price, instructor], (err, result) => {
+                        if (err) {
+                            console.error('Error inserting into courses table:', err.message);
+                            res.status(500).send('Failed to add course: ' + err.message);
+                            return;
+                        }
+                    
+                        db.query(coursecQuery, [title, playlist, material, exam], (err) => {
+                            if (err) {
+                                console.error('Error inserting into coursec table:', err.message);
+                                res.status(500).send('Failed to add course details: ' + err.message);
+                                return;
+                            }
+                    
+                            res.send('Course added successfully!');
+                        });
+                    });
+                });    
+        
+
+    
     //signup
     app.post("/signup", (req, res) => {
         const { name, email, phone, password, userType } = req.body;
@@ -145,26 +192,8 @@
             res.json({ loggedIn: false });
         }
     });
-    // Route to add a new course
-    app.post('/add-course', (req, res) => {
-        const { title, description, rating, price, instructor } = req.body;
     
-        // Validate input
-        if (!title || !description || rating || !price || !instructor) {
-            return res.status(200).json({ success: false, message: "All fields are required." });
-        }
-    
-        const sql = 'INSERT INTO courses (title, description, rating, price, instructor) VALUES (?, ?, ?, ?, ?)';
-    
-        db.query(sql, [title, description, rating, price, instructor], (err, result) => {
-            if (err) {
-                console.error("Error inserting course:", err);
-                return res.status(400).json({ success: false, message: "Failed to add course." });
-            }
-            res.send("Course added successfully:"); // Log successful insert
-          //  res.json({ success: true, message: "Course added successfully!" });
-        });
-    });
+
     // API to get course content by courseid
 app.get('/course-content/:courseid', (req, res) => {
     const courseid = req.params.courseid;

@@ -25,4 +25,11 @@ CREATE TABLE payment (
     approval TINYINT(1) DEFAULT 0,     -- Approval status: 0 (Pending) / 1 (Approved)
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP -- Timestamp of payment creation
 );
+CREATE TABLE coursec (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    course_name VARCHAR(255) NOT NULL,
+    youtube_link VARCHAR(255),
+    drive_link VARCHAR(255),
+    google_form_link VARCHAR(255)
+);
 
