@@ -13,7 +13,7 @@
     <div class="header">
         <h1>Bank Payment</h1>
     </div>
-
+    <h2>You have to pay: <span id="price"></span></h2>
     <div class="payment-section">
         <h2>Complete Your Payment</h2>
         <form id="bankPaymentForm">
@@ -25,18 +25,20 @@
                 <div class="error-message" id="account-error">Account number must be exactly 17 digits.</div>
             </div>
 
-            <!-- PIN -->
+            <!-- Transaction ID -->
             <div class="form-group">
-                <label for="bank-pin">Bank PIN</label>
-                <input type="password" id="bank-pin" name="bankPin" placeholder="Enter 4-digit PIN" maxlength="4"
-                    required>
-                <div class="error-message" id="pin-error">PIN must be exactly 4 digits.</div>
+                <label for="transaction-id">Transaction ID</label>
+                <input type="text" id="transaction-id" name="transactionId" placeholder="Enter your Transaction ID" required>
+                <div class="error-message" id="transaction-error">Transaction ID is required.</div>
             </div>
-            <div class="alternate-payment">
+
+             <!-- Alternate Payment Options -->
+             <div class="alternate-payment">
                 <p>You can also pay with:</p>
-                <a href="bkash-payment.html"class='button'>Bkash</a>
-                <a href="card-payment.html"class='button'>Card</a>
+                <a href="bkash-payment.html" class="button">Bkash</a>
+                <a href="card-payment.html" class="button">Card</a>
             </div>
+            
             <!-- Submit Button -->
             <div class="form-group">
                 <button type="button" id="pay-now">Pay Now</button>
@@ -44,10 +46,5 @@
         </form>
         <div class="success-message" id="success-message">Payment Successful!</div>
     </div>
-
-    <script>
-
-    </script>
 </body>
-
 </html>

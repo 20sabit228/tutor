@@ -1,19 +1,33 @@
 const cardInput = document.getElementById('card-number');
-const pinInput = document.getElementById('card-pin');
+const transactionInput = document.getElementById("transaction-id");
 const payNowButton = document.getElementById('pay-now');
 const cardError = document.getElementById('card-error');
-const pinError = document.getElementById('pin-error');
+const transactionError = document.getElementById("transaction-error");
 const successMessage = document.getElementById('success-message');
+const price=localStorage.getItem('price')
 
+document.querySelector('#price').textContent = `${price}`;
+// Event listener for "Pay Now" button
 payNowButton.addEventListener('click', function () {
     // Reset error states
     cardError.style.display = 'none';
-    pinError.style.display = 'none';
+    transactionError.style.display = "none";
+    successMessage.style.display = "none"; // Hide success message on new click
 
     const cardNumber = cardInput.value.trim();
-    const pin = pinInput.value.trim();
+    const transactionId = transactionInput.value.trim();
 
-    let isValid = true;
+      // Retrieve courseId and userId from local storage
+    const courseId = localStorage.getItem("courseId");
+    const userId = localStorage.getItem("username");
+
+    // Check if courseId and userId are available
+    if (!courseId || !userId) {
+        alert("Missing course ID or user ID in local storage.");
+        return;
+    }
+
+        let isValid = true;
 
     // Validate card number (must be 13 digits)
     if (!/^\d{13}$/.test(cardNumber)) {
@@ -21,19 +35,56 @@ payNowButton.addEventListener('click', function () {
         isValid = false;
     }
 
-    // Validate PIN (must be 4 digits)
-    if (!/^\d{4}$/.test(pin)) {
-        pinError.style.display = 'block';
+    // Validate Transaction ID (must not be empty)
+    if (!transactionId) {
+        transactionError.style.display = "block";
         isValid = false;
     }
 
-    // If valid, display success message
-    if (isValid) {
-        successMessage.style.display = 'block';
+    // If validation fails, stop the request
+    if (!isValid) return;
 
-        // Optionally, redirect or handle further logic here
-        setTimeout(() => {
-            window.location.href = 'payment-success.html';
-        }, 2000); // Redirect after 2 seconds
-    }
-});
+        // Construct the payload
+        const paymentData = {
+        courseId: courseId,
+        userId: userId,
+        trx: transactionId,
+        info: cardNumber,
+        type: "Card",
+        };
+
+        console.log("Payment Data:", paymentData); // Log payment data for debugging
+
+        // Send data to the backend
+        fetch("http://localhost:3000/payment", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(paymentData),
+        })
+        .then((response) => {
+            if (!response.ok) {
+            // If the response is not OK, parse the error message from the response body
+            return response.json().then((errorData) => {
+                throw new Error(errorData.message || "Failed to process payment. Please try again.");
+            });
+            }
+            return response.json(); // Assuming backend responds with JSON
+        })
+        .then((data) => {
+            if (data.success) {
+            // Display success message and redirect
+            successMessage.style.display = "block";
+            setTimeout(() => {
+                window.location.href = "index.html"; // Redirect to payment success page
+            }, 2000); // Delay redirection for 2 seconds
+            } else {
+            alert(data.message || "Payment failed. Please try again.");
+            }
+        })
+        .catch((error) => {
+            console.error("Error:", error);
+            alert(error.message); // Show the error message to the user
+        });
+    });

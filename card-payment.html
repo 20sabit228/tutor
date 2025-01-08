@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,11 +8,12 @@
     <script src="./js/card-payment.js" defer></script>
     <title>Card Payment</title>
 </head>
+
 <body>
     <div class="header">
         <h1>Card Payment</h1>
     </div>
-
+    <h2>You have to pay: <span id="price"></span></h2>
     <div class="payment-section">
         <h2>Complete Your Payment</h2>
         <form id="cardPaymentForm">
@@ -22,17 +24,20 @@
                 <div class="error-message" id="card-error">Card number must be exactly 13 digits.</div>
             </div>
 
-            <!-- PIN -->
+           <!-- Transaction ID -->
             <div class="form-group">
-                <label for="card-pin">Card PIN</label>
-                <input type="password" id="card-pin" name="cardPin" placeholder="Enter 4-digit PIN" maxlength="4" required>
-                <div class="error-message" id="pin-error">PIN must be exactly 4 digits.</div>
+                <label for="transaction-id">Transaction ID</label>
+                <input type="text" id="transaction-id" name="transactionId" placeholder="Enter your Transaction ID" required>
+                <div class="error-message" id="transaction-error">Transaction ID is required.</div>
             </div>
+
+            <!-- Alternate Payment Options -->
             <div class="alternate-payment">
                 <p>You can also pay with:</p>
-                <a href="bkash-payment.html"class='button'>Bkash</a>
-                <a href="bank-payment.html"class='button'>Bank</a>
+                <a href="bank-payment.html" class="button">Bank</a>
+                <a href="bkash-payment.html" class="button">Bkash</a>
             </div>
+            
             <!-- Submit Button -->
             <div class="form-group">
                 <button type="button" id="pay-now">Pay Now</button>
@@ -40,6 +45,6 @@
         </form>
         <div class="success-message" id="success-message">Payment Successful!</div>
     </div>
-
 </body>
+
 </html>
