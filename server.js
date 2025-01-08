@@ -66,6 +66,18 @@
             res.json(results); // Send the results as JSON to the frontend
         });
     });
+    // Express route for fetching student payments
+    //course check payment
+    app.get('/api/payments', (req, res) => {
+        const { username } = req.query;
+        // Query the payment table to get all courses the student has enrolled in
+        db.query('SELECT * FROM payment WHERE username = ?', [username], (err, result) => {
+        if (err) {
+            return res.status(500).json({ error: 'Database error' });
+        }
+        res.json(result); // Return all the student's enrollments
+        });
+    });
     
     // Route to add a new course
     app.post('/add-course', (req, res) => {
@@ -194,34 +206,7 @@
     });
     
 
-    // API to get course content by courseid
-app.get('/course-content/:courseid', (req, res) => {
-    const courseid = req.params.courseid;
 
-    // Validate courseid
-    if (!courseid) {
-        return res.status(400).json({ success: false, message: "Course ID is required." });
-    }
-
-    const sql = `
-        SELECT c.title, cc.material, cc.content_type, cc.upload_date
-        FROM courses c
-        JOIN coursecontent cc ON c.courseid = cc.courseid
-        WHERE c.courseid = ?`;
-
-    db.query(sql, [courseid], (err, results) => {
-        if (err) {
-            console.error("Error fetching course content:", err);
-            return res.status(500).json({ success: false, message: "Failed to fetch course content." });
-        }
-
-        if (results.length === 0) {
-            return res.status(404).json({ success: false, message: "No content found for this course." });
-        }
-
-        res.json({ success: true, data: results });
-    });
-});
 // Payment route
 
     // Start the server
