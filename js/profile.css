@@ -1,0 +1,33 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 0;
+}
+.profile-container {
+    max-width: 400px;
+    margin: auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.profile-container h2 {
+    text-align: center;
+}
+.profile-field {
+    margin: 10px 0;
+}
+.logoutBtn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #f44336;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+}
+.logoutBtn:hover {
+    background-color: #d32f2f;
+}

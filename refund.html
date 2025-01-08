@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Refund Request</title>
+  <link rel="stylesheet" href="./styles/refund.css">
+  <script src="./js/refund.js" defer></script>
+</head>
+<body>
+  <div class="container">
+    <h2>Refund Request</h2>
+    <form id="refundForm">
+      <label for="courseTitle">Course Title:</label>
+      <input type="text" id="courseTitle" placeholder="Enter course title" required>
+      
+      <label for="reason">Reason for Refund:</label>
+      <textarea id="reason" placeholder="Enter your reason for refund" required></textarea>
+      
+      <button type="submit">Submit Request</button>
+    </form>
+    <p id="responseMessage" style="margin-top: 10px;"></p>
+  </div>
+</body>
+</html>

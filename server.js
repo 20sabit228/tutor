@@ -241,7 +241,25 @@ app.get("/api/showreviews", (req, res) => {
     });
   });
   
-
+//refund
+app.post("/api/refunds", (req, res) => {
+    const { username, course_title, reason } = req.body;
+  
+    if (!username || !course_title || !reason) {
+      return res.status(400).json({ error: "All fields are required." });
+    }
+  
+    const query = "INSERT INTO refund (username, course_title, reason) VALUES (?, ?, ?)";
+    db.query(query, [username, course_title, reason], (err, result) => {
+      if (err) {
+        console.error("Error inserting refund request into database:", err);
+        return res.status(500).json({ error: "Failed to submit refund request." });
+      }
+  
+      res.json({ message: "Refund request submitted successfully." });
+    });
+  });
+  
 
 //coursec
 app.get('/get-course-details', (req, res) => {

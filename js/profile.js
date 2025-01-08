@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const phoneElement = document.getElementById("phone");
     const userTypeElement = document.getElementById("userType");
     const logoutBtn = document.getElementById("logoutBtn");
+    const refund = document.getElementById("refund");
 
     // Fetch user data from localStorage (replace this with a server call if needed)
     const name = localStorage.getItem("username") || "Unknown User";
@@ -21,18 +22,24 @@ document.addEventListener("DOMContentLoaded", () => {
    console.log(userType)
     if (userType=='teacher'){
         addcourse.style.display = "block"
+        refund.style.display = "block"
     }
     else{
         addcourse.style.display = "none"
+        refund.style.display = "block"
     }
     logoutBtn.addEventListener("click", () => {
         // Clear login state and user data
         localStorage.removeItem("loggedIn");
         localStorage.removeItem("username");
         localStorage.removeItem("email");
+    
 
         // Redirect to login page
         window.location.href = "in.html"; // Update with your login page URL
 
     });
-});
+
+
+
+    });
