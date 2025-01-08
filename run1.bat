@@ -1,3 +1,2 @@
-
-cd G:\Downloadss\login (1)\login\l\tutor\mvc\project
+cd G:\Downloadss\login (1)\login\l\mvc\project
 node index.js
