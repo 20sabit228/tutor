@@ -71,6 +71,7 @@ function fetchCourses() {
             // Attach event listener for "Enroll Now" button
             enrollButton.addEventListener("click", (event) => {
               const courseId = event.target.getAttribute("data-course-id");
+              localStorage.setItem("price", course.price);
               console.log("Enrolling in course:", course.title);
               localStorage.setItem("courseId", courseId);
 

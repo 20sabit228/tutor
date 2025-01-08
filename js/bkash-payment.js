@@ -4,7 +4,8 @@ const payNowButton = document.getElementById("pay-now");
 const phoneError = document.getElementById("phone-error");
 const transactionError = document.getElementById("transaction-error");
 const successMessage = document.getElementById("success-message");
-
+const price=localStorage.getItem('price')
+document.querySelector('#price').textContent = `${price}`;
 // Event listener for "Pay Now" button
 payNowButton.addEventListener("click", function () {
   // Reset error states
