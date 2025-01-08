@@ -5,7 +5,7 @@ function fetchCourses() {
       console.log("Received courses:", courses);
       const container = document.getElementById("coursesContainer");
       container.innerHTML = ""; // Clear container before adding courses
-
+      const userType=localStorage.getItem('userType')
       courses.forEach((course) => {
         const courseCard = document.createElement("div");
         courseCard.classList.add("course-card");
@@ -22,7 +22,9 @@ function fetchCourses() {
         enrollButton.classList.add("enroll");
         enrollButton.textContent = "Enroll Now";
         enrollButton.setAttribute("data-course-id", course.id);
-
+        if (userType=='teacher'){
+          enrollButton.style.display='none'
+        }
         // Attach event listener for "Enroll Now" button
         enrollButton.addEventListener("click", (event) => {
           const courseId = event.target.getAttribute("data-course-id");

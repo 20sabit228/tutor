@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
       logoutBtn.style.display = "block";
       loginBtn.style.display = "none";
       signupBtn.style.display = "none";
-      emergency.style.display='block'
+      emergency.style.display='block';
 
       profileBtn.addEventListener("click", () => {
           window.location.href = "profile.html"; // Redirect to profile page

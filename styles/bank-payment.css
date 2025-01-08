@@ -20,6 +20,22 @@ body {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
 }
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
 
 .payment-section h2 {
     text-align: center;
