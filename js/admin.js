@@ -20,6 +20,7 @@ async function fetchData1(endpoint, tableId) {
             <td>${item.course_id}</td>
             <td>${item.trx}</td>
             <td>${item.type}</td>
+            <td>${item.price}</td>
             <td>${item.approval === 1 ? 'Approved' : 'Pending'}</td>
             <td>
               ${item.approval === 0 ? 

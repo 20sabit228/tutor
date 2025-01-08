@@ -144,16 +144,16 @@ if (userType=='teacher'){
         res.send("Signup successful!");
     });
 app.post("/payment", (req, res) => {
-        const { courseId, userId, trx, info, type } = req.body;
+        const { courseId, userId, trx, info, type, price } = req.body;
     
         // Validate data (example)
-        if (!courseId || !userId || !trx || !info || !type) {
+        if (!courseId || !userId || !trx || !info || !type || !type) {
             return res.status(400).json({ success: false, message: "Invalid data" });
         }
     
         // Insert into the database (example with MySQL)
-        const query = 'INSERT INTO payment (course_id, username, trx, info, type) VALUES (?, ?, ?, ?, ?)';
-        const values = [courseId, userId, trx, info, type];
+        const query = 'INSERT INTO payment (course_id, username, trx, info, type,price) VALUES (?, ?, ?, ?, ?,?)';
+        const values = [courseId, userId, trx, info, type,price];
     
         db.query(query, values, (err, result) => {
             if (err) {
