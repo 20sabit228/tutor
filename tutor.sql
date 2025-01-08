@@ -34,4 +34,10 @@ CREATE TABLE coursec (
     google_form_link2 VARCHAR(255)
     progress VARCHAR(255),
 );
+CREATE TABLE review (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    course_title VARCHAR(255) NOT NULL,
+    review TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
 
