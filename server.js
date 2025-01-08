@@ -290,8 +290,95 @@ app.get('/get-course-details', (req, res) => {
     });
 });
 
-// Payment route
+// ADMIN DO NOT TOUCH
 
+// Route to fetch all users
+
+// Route to fetch all courses
+app.get('/admin/courses', (req, res) => {
+    db.query('SELECT * FROM courses', (err, results) => {
+      if (err) {
+        return res.status(500).json({ success: false, message: 'Error fetching courses', error: err });
+      }
+      console.log('Fetched courses:', results); // Log the results to check if they are duplicated
+      res.json({ success: true, courses: results });
+    });
+  });
+  
+  // Route to fetch all users
+  app.get('/admin/users', (req, res) => {
+    db.query('SELECT * FROM customers', (err, results) => {
+      if (err) {
+        return res.status(500).json({ success: false, message: 'Error fetching users', error: err });
+      }
+      res.json({ success: true, users: results });
+    });
+  });
+  
+  // Route to fetch all payment details
+  app.get('/admin/payments', (req, res) => {
+    db.query('SELECT * FROM payment', (err, results) => {
+      if (err) {
+        return res.status(500).json({ success: false, message: 'Error fetching payments', error: err });
+      }
+      res.json({ success: true, payments: results });
+    });
+  });
+  
+  // Route to fetch all refund requests
+  app.get('/admin/refunds', (req, res) => {
+    db.query('SELECT * FROM refund', (err, results) => {
+      if (err) {
+        return res.status(500).json({ success: false, message: 'Error fetching refunds', error: err });
+      }
+      res.json({ success: true, refunds: results });
+    });
+  });
+// drop
+// Example for deleting a course
+app.delete('/admin/delete-course', async (req, res) => {
+    const { id } = req.body;
+    try {
+      // Assuming you are using SQL (e.g., MySQL)
+      await db.query('DELETE FROM courses WHERE id = ?', [id]);
+      res.json({ success: true, message: 'Course deleted successfully' });
+    } catch (error) {
+      console.error('Error deleting course:', error);
+      res.status(500).json({ success: false, message: 'Error deleting course' });
+    }
+  });
+  
+  // Example for deleting a user
+  app.delete('/admin/delete-user', async (req, res) => {
+    const { id } = req.body;
+    try {
+      // Assuming you are using SQL (e.g., MySQL)
+      await db.query('DELETE FROM customers WHERE email = ?', [id]);
+      res.json({ success: true, message: 'User deleted successfully' });
+    } catch (error) {
+      console.error('Error deleting user:', error);
+      res.status(500).json({ success: false, message: 'Error deleting user' });
+    }
+  });
+  
+  // Similar routes for deleting payments and refunds
+  // Example for approving a payment
+// Example for approving a payment
+app.post('/admin/approve-payment', async (req, res) => {
+    const { id } = req.body;
+    try {
+      const result = await db.query('UPDATE payment SET approval = 1 WHERE id = ?', [id]);
+  
+      if (result.affectedRows > 0) {
+        return res.json({ success: true, message: 'Payment approved successfully' });
+      } else {
+        return res.status(400).json({ success: false, message: 'Payment not found or already approved' });
+      }
+    } catch (error) {
+      console.error('Error approving payment:', error);
+      res.status(500).json({ success: false, message: 'Error approving payment' });
+    }
+  });
 // Start the server
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);

@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
    console.log(userType)
     if (userType=='teacher'){
         addcourse.style.display = "block"
-        refund.style.display = "block"
+        refund.style.display = "none"
     }
     else{
         addcourse.style.display = "none"

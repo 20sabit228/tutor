@@ -45,6 +45,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
       emergency.addEventListener("click", () => {
         window.location.href = "http://localhost:3300/"; // Redirect to signup page
-    });
-  }
-});
+      });
+
+  }});
