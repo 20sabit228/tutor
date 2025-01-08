@@ -23,6 +23,7 @@ CREATE TABLE payment (
     trx VARCHAR(255) NOT NULL,         -- Transaction ID
     type ENUM('Bkash', 'Card', 'Bank') NOT NULL, -- Payment type
     approval TINYINT(1) DEFAULT 0,     -- Approval status: 0 (Pending) / 1 (Approved)
+    price INT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP -- Timestamp of payment creation
 );
 CREATE TABLE coursec (

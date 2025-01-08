@@ -50,6 +50,7 @@ payNowButton.addEventListener("click", function () {
     trx: transactionId,
     info: phoneNumber,
     type: "Bkash",
+    price: price,
   };
 
   console.log("Payment Data:", paymentData); // Log payment data for debugging

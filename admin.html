@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/admin.css">
+    <script src="./js/admin.js" defer></script>
+    <title>Admin Dashboard</title>
+</head>
+
+<body>
+    <div class="header">
+        <h1>Admin Dashboard</h1>
+    </div>
+
+    <div class="container">
+        <!-- Courses Table -->
+        <section class="data-section">
+            <h2>All Courses</h2>
+            <table id="courses-table">
+                <thead>
+                    <tr>
+                        <th>Course Name</th>
+                        <th>Instructor</th>
+                        <th>Price</th>
+                        <th>Rating</th>
+                        <th>Action</th> <!-- Added Action column for Drop button -->
+                    </tr>
+                </thead>
+                <tbody id="courses-list"></tbody>
+            </table>
+        </section>
+
+        <!-- Users Table -->
+        <section class="data-section">
+            <h2>All Users</h2>
+            <table id="users-table">
+                <thead>
+                    <tr>
+                        <th>User Name</th>
+                        <th>Email</th>
+                        <th>User Type</th>
+                        <th>Action</th> <!-- Added Action column for Drop button -->
+                    </tr>
+                </thead>
+                <tbody id="users-list"></tbody>
+            </table>
+        </section>
+
+        <!-- Payments Table -->
+<!-- Payments Table -->
+<section class="data-section">
+  <h2>Payment Details</h2>
+  <table id="payments-table">
+      <thead>
+          <tr>
+              <th>Course Name</th>
+              <th>Transaction ID</th>
+              <th>Payment Type</th>
+              <th>Price</th>
+              <th>Status</th>
+              <th>Action</th> <!-- Added Action column for Approve button -->
+          </tr>
+      </thead>
+      <tbody id="payments-list"></tbody>
+  </table>
+</section>
+
+
+        <!-- Refund Requests Table -->
+        <section class="data-section">
+            <h2>Refund Requests</h2>
+            <table id="refunds-table">
+                <thead>
+                    <tr>
+                        <th>User Name</th>
+                        <th>Course Title</th>
+                        <th>Reason</th>
+                        <th>Request Date</th>
+                        <th>Action</th> <!-- Added Action column for Drop button -->
+                    </tr>
+                </thead>
+                <tbody id="refunds-list"></tbody>
+            </table>
+        </section>
+    </div>
+</body>
+
+</html>
