@@ -10,14 +10,16 @@ document.addEventListener('DOMContentLoaded', function() {
         const instructor = document.getElementById("instructor").value.trim();
         const playlist = document.getElementById("playlist").value.trim();
         const material = document.getElementById("material").value.trim();
-        const exam = document.getElementById("exam").value.trim();
+        const exam1 = document.getElementById("exam1").value.trim();
+        const exam2 = document.getElementById("exam2").value.trim();
+        const progress = document.getElementById("progress").value.trim();
         const errorElement = document.getElementById("error");
 
         // Clear previous errors
         errorElement.textContent = "";
 
         // Validate the form data
-        if (!title || !description || isNaN(price) || !instructor || !playlist || !material || !exam) {
+        if (!title || !description || isNaN(price) || !instructor || !playlist || !material || !exam1 || !exam2 || !progress ) {
             errorElement.textContent = "All fields are required.";
             return;
         }
@@ -30,7 +32,9 @@ document.addEventListener('DOMContentLoaded', function() {
             instructor,
             playlist,
             material,
-            exam
+            exam1,
+            exam2,
+            progress
         };
 
         fetch('http://localhost:3000/add-course', {

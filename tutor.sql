@@ -30,6 +30,8 @@ CREATE TABLE coursec (
     course_name VARCHAR(255) NOT NULL,
     youtube_link VARCHAR(255),
     drive_link VARCHAR(255),
-    google_form_link VARCHAR(255)
+    google_form_link VARCHAR(255),
+    google_form_link2 VARCHAR(255)
+    progress VARCHAR(255)
 );
 

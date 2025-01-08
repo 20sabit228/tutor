@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/coursec.css">
+    <script src="./js/coursec.js"></script>
     <title>Course Content</title>
-    <script defer src="./js/coursec.js"></script>
 </head>
-
 <body>
     <div class="container">
         <header>
@@ -16,9 +14,18 @@
         </header>
 
         <div class="course-section">
-            <!-- Course cards will be dynamically inserted here -->
+            <div class="course-card">
+                <h2>Course Name: <span id="course-name"></span></h2>
+                <div class="links">
+                    <p><strong>YouTube Link:</strong> <a id="youtube-link" href="#" target="_blank">Watch Video</a></p>
+                    <p><strong>Drive Link:</strong> <a id="drive-link" href="#" target="_blank">Access Resources</a></p>
+                    <p><strong>Google Form Link:</strong> <a id="google-form-link" href="#" target="_blank">Fill Form</a></p>
+                    <p><strong>Google Form Link(2nd):</strong> <a id="google-form-link2" href="#" target="_blank">Fill Form</a></p>
+                    <p><strong>Progress:</strong> <a id="progress" href="#" target="_blank">View your progress</a></p>
+                </div>
+            </div>
         </div>
     </div>
-</body>
 
+</body>
 </html>

@@ -1,29 +1,26 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const container = document.querySelector('.course-section');
-
-    fetch('http://localhost:3000/get-courses')
-        .then(response => response.json())
-        .then(courses => {
-            courses.forEach(course => {
-                const courseCard = document.createElement('div');
-                courseCard.classList.add('course-card');
-
-                courseCard.innerHTML = `
-                    <h2>Course Name: ${course.course_name}</h2>
-                    <div class="links">
-                        <p><strong>YouTube Link:</strong> <a href="${course.youtube_link}" target="_blank">Watch Video</a></p>
-                        <p><strong>Drive Link:</strong> <a href="${course.drive_link}" target="_blank">Access Resources</a></p>
-                        <p><strong>Google Form Link:</strong> <a href="${course.google_form_link}" target="_blank">Fill Form</a></p>
-                    </div>
-                `;
-
-                container.appendChild(courseCard);
+document.addEventListener('DOMContentLoaded', function () {
+    // Retrieve course title from localStorage
+    const courseTitle = localStorage.getItem('coursename');  // Make sure this matches the key used in the first code block
+    console.log(courseTitle);
+    
+    if (courseTitle) {
+        // Fetch course details based on the course title
+        fetch(`http://localhost:3000/get-course-details?title=${courseTitle}`)
+            .then(response => response.json())
+            .then(course => {
+                // Populate the page with course details
+                document.querySelector('h2').textContent = `Course Name: ${course.course_name}`;
+                document.querySelector('#youtube-link').href = course.youtube_link;
+                document.querySelector('#drive-link').href = course.drive_link;
+                document.querySelector('#google-form-link').href = course.google_form_link;
+                document.querySelector('#google-form-link2').href = course.google_form_link2;
+                document.querySelector('#progress').href = course.progress;
+            })
+            .catch(error => {
+                console.error('Error fetching course details:', error);
+                // Handle error (e.g., show an error message)
             });
-        })
-        .catch(error => {
-            console.error('Error fetching courses:', error);
-            const errorMessage = document.createElement('p');
-            errorMessage.textContent = 'Failed to load courses. Please try again later.';
-            container.appendChild(errorMessage);
-        });
+    } else {
+        console.error('Course title not found in localStorage.');
+    }
 });

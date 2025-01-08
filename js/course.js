@@ -74,7 +74,9 @@ function fetchCourses() {
               console.log("Starting course:", course.title);
               // Navigate to course page or similar functionality
               window.location.href = `coursec.html`; // Replace with your course starting URL
-              localStorage.setItem("coursename", course.title);
+              localStorage.setItem("coursename", courseId);
+              const coursename=localStorage.getItem('coursename')
+              console.log(coursename)
             });
 
             courseCard.appendChild(enterButton);
