@@ -32,6 +32,6 @@ CREATE TABLE coursec (
     drive_link VARCHAR(255),
     google_form_link VARCHAR(255),
     google_form_link2 VARCHAR(255)
-    progress VARCHAR(255)
+    progress VARCHAR(255),
 );
 

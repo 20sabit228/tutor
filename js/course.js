@@ -40,13 +40,25 @@ function fetchCourses() {
             enrollButton.textContent = "Enroll Now";
             enrollButton.setAttribute("data-course-id", course.title);
 
+            const reviewButton = document.createElement("button");
+            reviewButton.classList.add("review");
+            reviewButton.textContent = "Write a review";
+            reviewButton.setAttribute("data-course-id", course.title);
+
+            const showreviewButton = document.createElement("button");
+            showreviewButton.classList.add("showreview");
+            showreviewButton.textContent = "View Review";
+            showreviewButton.setAttribute("data-course-id", course.title);
+
             // Show "Start Your Course" button only if the student has enrolled in this course
             const hasEnrolled = payments.some(payment => payment.course_id === course.title);
             if (hasEnrolled && userType === 'student') {
               enterButton.style.display = 'block';
               enrollButton.style.display='none'
+             reviewButton.style.display='block'
             } else {
               enterButton.style.display = 'none';
+             reviewButton.style.display='none'
             }
 
 
@@ -67,7 +79,22 @@ function fetchCourses() {
 
               window.location.href = "/bkash-payment.html"; // Redirect to payment page
             });
-
+            reviewButton.addEventListener("click", (event) => {
+              const courseId = event.target.getAttribute("data-course-id");
+              // Navigate to course page or similar functionality
+              window.location.href = `review.html`; // Replace with your course starting URL
+              localStorage.setItem("coursename", courseId);
+              const coursename=localStorage.getItem('coursename')
+              console.log(coursename)
+            });
+            showreviewButton.addEventListener("click", (event) => {
+              const courseId = event.target.getAttribute("data-course-id");
+              // Navigate to course page or similar functionality
+              window.location.href = `showreview.html`; // Replace with your course starting URL
+              localStorage.setItem("coursename", courseId);
+              const coursename=localStorage.getItem('coursename')
+              console.log(coursename)
+            });
             // Attach event listener for "Start Your Course" button (if user is a student)
             enterButton.addEventListener("click", (event) => {
               const courseId = event.target.getAttribute("data-course-id");
@@ -81,7 +108,10 @@ function fetchCourses() {
 
             courseCard.appendChild(enterButton);
             courseCard.appendChild(enrollButton);
+            courseCard.appendChild(reviewButton);
+            courseCard.appendChild(showreviewButton);
             container.appendChild(courseCard);
+
           });
         })
         .catch((error) => console.error("Error fetching student payments:", error));

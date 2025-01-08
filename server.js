@@ -204,8 +204,46 @@ app.get("/auth/status", (req, res) => {
         res.json({ loggedIn: false });
     }
 });
+//review
+app.post("/api/reviews", (req, res) => {
+    const { course_title, review, username } = req.body;
+  
+    if (!course_title || !review || !username) {
+      return res.status(400).json({ error: "All fields are required." });
+    }
+  
+    const query = "INSERT INTO review (course_title, review, username, created_at) VALUES (?, ?, ?, NOW())";
+    db.query(query, [course_title, review, username], (err, result) => {
+      if (err) {
+        console.error("Error inserting review into database:", err);
+        return res.status(500).json({ error: "Failed to submit review." });
+      }
+  
+      res.json({ message: "Review submitted successfully." });
+    });
+  });
+//show review
+app.get("/api/showreviews", (req, res) => {
+    const courseTitle = req.query.course_title;
+  
+    if (!courseTitle) {
+      return res.status(400).json({ error: "Course title is required." });
+    }
+  
+    const query = "SELECT * FROM review WHERE course_title = ?";
+    db.query(query, [courseTitle], (err, results) => {
+      if (err) {
+        console.error("Error fetching reviews from database:", err);
+        return res.status(500).json({ error: "Failed to fetch reviews." });
+      }
+  
+      res.json(results);
+    });
+  });
+  
 
 
+//coursec
 app.get('/get-course-details', (req, res) => {
     const { title } = req.query;
     
@@ -214,7 +252,7 @@ app.get('/get-course-details', (req, res) => {
     }
 
     const query = `
-        SELECT c.title AS course_name, cc.youtube_link, cc.drive_link, cc.google_form_link
+        SELECT c.title AS course_name, cc.youtube_link, cc.drive_link, cc.google_form_link,cc.google_form_link2,cc.progress
         FROM courses c
         JOIN coursec cc ON c.title = cc.course_name
         WHERE c.title = ?`;
