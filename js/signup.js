@@ -1,3 +1,17 @@
+document.getElementById("userType").addEventListener("change", function () {
+    const roleLabel = document.getElementById("roleLabel");
+    const roleInput = document.getElementById("role");
+
+    if (this.value === "teacher") {
+        roleLabel.style.display = "block";
+        roleInput.style.display = "block";
+    } else {
+        roleLabel.style.display = "none";
+        roleInput.style.display = "none";
+        roleInput.value = ""; // Clear the role input when not needed
+    }
+});
+
 document.getElementById("signupForm").addEventListener("submit", function (event) {
     event.preventDefault(); // Prevent the form from submitting traditionally
 
@@ -7,6 +21,7 @@ document.getElementById("signupForm").addEventListener("submit", function (event
     const password = document.getElementById("password").value;
     const rePassword = document.getElementById("rePassword").value;
     const userType = document.getElementById("userType").value;
+    const role = document.getElementById("role").value.trim();
     const errorElement = document.getElementById("error");
 
     // Clear previous errors
@@ -24,13 +39,20 @@ document.getElementById("signupForm").addEventListener("submit", function (event
         return;
     }
 
+    // Validate role for teachers
+    if (userType === "teacher" && role === "") {
+        errorElement.textContent = "Please enter your role.";
+        return;
+    }
+
     // Prepare the data to send to the server
     const signupData = {
         name,
         email,
         phone,
         password,
-        userType, // Include userType in the data
+        userType,
+        ...(userType === "teacher" && { role }), // Include role only if userType is "teacher"
     };
 
     // Send data to the server
@@ -41,14 +63,12 @@ document.getElementById("signupForm").addEventListener("submit", function (event
         },
         body: JSON.stringify(signupData),
     })
-    
         .then((response) => {
             if (!response.ok) {
                 throw new Error("Failed to sign up.");
             }
             return response.text();
         })
-
         .then((message) => {
             alert(message); // Display success message
             window.location.href = "in.html"; // Redirect to index.html

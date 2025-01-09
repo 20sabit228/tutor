@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Check if the user is logged in
   const isLoggedIn = localStorage.getItem("loggedIn");
+  const userType=localStorage.getItem('userType')
 
   if (isLoggedIn === "true") {
       // User is logged in: Show "My Profile" and "Logout", hide "Login" and "Sign Up"
@@ -29,9 +30,17 @@ document.addEventListener("DOMContentLoaded", () => {
           window.location.href = "in.html"; // Update with your login page URL
       });
       emergency.addEventListener("click", () => {
-        window.location.href = "http://localhost:3300/"; // Redirect to signup page
+        if (userType=='teacher')
+        window.location.href = "http://localhost:3300/admin"; // Redirect to signup page
+        if (userType=='student'){
+            window.location.href = "http://localhost:3300"; // Redirect to signup page
+
+        }
       });
-  } else {
+
+
+  }
+   else {
       // User is not logged in: Show "Login" and "Sign Up", hide "My Profile" and "Logout"
       profileBtn.style.display = "none";
       logoutBtn.style.display = "none";

@@ -27,11 +27,23 @@
             <label for="rePassword">Confirm Password</label>
             <input type="password" id="rePassword" name="rePassword" placeholder="Re-enter your password" required>
             <label for="userType">User Type</label>
-            <select id="userType" name="userType" required>
-                <option value="" disabled selected>Select</option>
-                <option value="student">Student</option>
-                <option value="teacher">Teacher</option>
-            </select>
+            <form id="signupForm">
+                <!-- Other input fields -->
+                
+                <label for="userType">User Type</label>
+                <select id="userType" name="userType" required>
+                    <option value="" disabled selected>Select</option>
+                    <option value="student">Student</option>
+                    <option value="teacher">Teacher</option>
+                </select>
+                
+                <label for="role" id="roleLabel" style="display: none;">Role</label>
+                <input type="text" id="role" name="role" placeholder="Enter your role" style="display: none;">
+                
+                <div class="error" id="error"></div>
+                <button type="submit">Create Account</button>
+            </form>
+            
             
             <div class="error" id="error"></div>
             <button type="submit">Create Account</button>     

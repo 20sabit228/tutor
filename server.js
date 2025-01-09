@@ -112,47 +112,35 @@ app.post('/add-course', (req, res) => {
 
 //signup
 app.post("/signup", (req, res) => {
-    const { name, email, phone, password, userType } = req.body;
+    const { name, email, phone, password, userType,role } = req.body;
 
     if (!name || !email || !phone || !password || !userType) {
         return res.status(400).send("All fields are required.");
     }
     const sqlUsers = "INSERT INTO users (username, password) VALUES (?, ?)";
-    const sqlUsers2 = "INSERT INTO users2 (username, password) VALUES (?, ?)";
+    const sqlUsers2 = "INSERT INTO users2 (username, password,role) VALUES (?, ?, ?)";
     const sql = "INSERT INTO customers (name, email, phone, password, userType) VALUES (?, ?, ?, ?, ?)";
     db.query(sql, [name, email, phone, password, userType], (err, result) => {
         if (err) {
             console.error("Error inserting data:", err);
             return res.status(500).send("Failed to insert data.");
         }
-<<<<<<< HEAD
-       res.send("Signup successful!");
-=======
         res.send("Signup successful!");
->>>>>>> 7ee7d2faf628cfb0fa3059265bd6a71517e7f882
     });
-if (userType=='student'){
-     db1.query(sqlUsers, [name, password], (err, result) => {
-    if (err) {
-        console.error("Error inserting into users table:", err);
-        return res.status(500).send("Failed to insert into users table.");
-    }
-<<<<<<< HEAD
-    //res.send("Signup successful!");
-=======
->>>>>>> 7ee7d2faf628cfb0fa3059265bd6a71517e7f882
-})}
-if (userType=='teacher'){
-        db1.query(sqlUsers2, [name, password], (err, result) => {
+    if (userType=='student'){
+        db1.query(sqlUsers, [name, password], (err, result) => {
         if (err) {
             console.error("Error inserting into users table:", err);
             return res.status(500).send("Failed to insert into users table.");
-        }})};
-<<<<<<< HEAD
-        // res.send("Signup successful!");
-=======
->>>>>>> 7ee7d2faf628cfb0fa3059265bd6a71517e7f882
-    });
+        }
+    })}
+    if (userType=='teacher'){
+            db1.query(sqlUsers2, [name, password,role], (err, result) => {
+            if (err) {
+                console.error("Error inserting into users table:", err);
+                return res.status(500).send("Failed to insert into users table.");
+            }})};
+        });
 app.post("/payment", (req, res) => {
         const { courseId, userId, trx, info, type, price } = req.body;
     
