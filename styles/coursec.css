@@ -1,3 +1,4 @@
+/* General Styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -5,48 +6,60 @@ body {
     background-color: #f9f9f9;
 }
 
-.container {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-}
-
-header {
+.header {
+    background-color: #007bff;
+    color: #fff;
     text-align: center;
+    padding: 20px;
     margin-bottom: 20px;
 }
 
-header h1 {
-    font-size: 2rem;
+.course-section {
+    width: 80%;
+    margin: 0 auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
     color: #333;
 }
 
 .course-card {
-    border: 1px solid #ddd;
-    padding: 15px;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    background-color: #fdfdfd;
+    margin-top: 20px;
 }
 
-.course-card h2 {
-    font-size: 1.5rem;
-    color: #444;
+.form-group {
+    margin-bottom: 15px;
 }
 
-.links p {
-    margin: 10px 0;
-    font-size: 1rem;
-}
-
-.links a {
-    color: #007bff;
+button, a.button {
+    background-color: #007bff;
+    color: #fff;
     text-decoration: none;
+    padding: 3px 1px;
+    border: none;
+    border-radius: 1px;
+    cursor: pointer;
 }
 
-.links a:hover {
-    text-decoration: underline;
+button:hover, a.button:hover {
+    background-color: #0056b3;
+}
+
+.links .form-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.links label {
+    flex: 1;
+}
+
+.links a.button {
+    flex: 2;
+    text-align: center;
 }

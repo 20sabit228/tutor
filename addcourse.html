@@ -1,46 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="./js/addcourse.js"></script>
+    <link rel="stylesheet" href="./styles/addcourse.css">
+    <script src="./js/addcourse.js" defer></script>
     <title>Add New Course</title>
 </head>
+
 <body>
-    <h1>Add a New Course</h1>
+    <div class="header">
+        <h1>Add a New Course</h1>
+    </div>
     
-    <form id="addcourseform">
-        <label for="title">Course Title:</label>
-        <input type="text" id="title" name="title" required><br><br>
+    <div class="form-container">
+        <h2>Course Details</h2>
+        <form id="addcourseform">
+            <!-- Course Title -->
+            <div class="form-group">
+                <label for="title">Course Title</label>
+                <input type="text" id="title" name="title" placeholder="Enter course title" required>
+            </div>
 
-        <label for="description">Course Description:</label>
-        <textarea id="description" name="description" required></textarea><br><br>
+            <!-- Course Description -->
+            <div class="form-group">
+                <label for="description">Course Description</label>
+                <textarea id="description" name="description" placeholder="Enter course description" required></textarea>
+            </div>
 
-        <label for="price">Course Price:</label>
-        <input type="number" id="price" name="price" step="0.01" required><br><br>
+            <!-- Course Price -->
+            <div class="form-group">
+                <label for="price">Course Price</label>
+                <input type="number" id="price" name="price" step="0.01" placeholder="Enter course price" required>
+            </div>
 
-        <label for="instructor">Instructor Name:</label>
-        <input type="text" id="instructor" name="instructor" required><br><br>
-        
-        <label for="playlist">Playlist</label>
-        <input type="text" id="playlist" name=playlist" required><br><br>
+            <!-- Instructor Name -->
+            <div class="form-group">
+                <label for="instructor">Instructor Name</label>
+                <input type="text" id="instructor" name="instructor" placeholder="Enter instructor name" required>
+            </div>
 
-        <label for="material">material</label>
-        <input type="text" id="material" name="material" required><br><br>
+            <!-- Playlist -->
+            <div class="form-group">
+                <label for="playlist">Playlist</label>
+                <input type="text" id="playlist" name="playlist" placeholder="Enter playlist link" required>
+            </div>
 
-        <label for="exam1">exam1</label>
-        <input type="text" id="exam1" name="exam1" required><br><br>
+            <!-- Material -->
+            <div class="form-group">
+                <label for="material">Material</label>
+                <input type="text" id="material" name="material" placeholder="Enter materials link" required>
+            </div>
 
-        <label for="exam2">exam2</label>
-        <input type="text" id="exam2" name="exam2" required><br><br>
+            <!-- Exam 1 -->
+            <div class="form-group">
+                <label for="exam1">Exam 1</label>
+                <input type="text" id="exam1" name="exam1" placeholder="Enter exam 1 details" required>
+            </div>
 
-        <label for="progress">progress</label>
-        <input type="text" id="progress" name="progress" required><br><br>
+            <!-- Exam 2 -->
+            <div class="form-group">
+                <label for="exam2">Exam 2</label>
+                <input type="text" id="exam2" name="exam2" placeholder="Enter exam 2 details" required>
+            </div>
 
-        <button type="submit">Add Course</button>
-    </form>
+            <!-- Progress -->
+            <div class="form-group">
+                <label for="progress">Progress</label>
+                <input type="text" id="progress" name="progress" placeholder="Enter progress details" required>
+            </div>
 
-    <div id="error"></div>
-
+            <!-- Submit Button -->
+            <div class="form-group">
+                <button type="submit" class="button">Add Course</button>
+            </div>
+        </form>
+        <div id="error" class="error-message"></div>
+    </div>
 </body>
+
 </html>

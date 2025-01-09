@@ -23,7 +23,7 @@ payNowButton.addEventListener('click', function () {
 
     // Check if courseId and userId are available
     if (!courseId || !userId) {
-        alert("Missing course ID or user ID in local storage.");
+        alert("Please log in first");
         return;
     }
 

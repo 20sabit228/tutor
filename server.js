@@ -125,7 +125,7 @@ app.post("/signup", (req, res) => {
             console.error("Error inserting data:", err);
             return res.status(500).send("Failed to insert data.");
         }
-       // res.send("Signup successful!");
+       res.send("Signup successful!");
     });
 if (userType=='student'){
      db1.query(sqlUsers, [name, password], (err, result) => {
@@ -133,7 +133,7 @@ if (userType=='student'){
         console.error("Error inserting into users table:", err);
         return res.status(500).send("Failed to insert into users table.");
     }
-    res.send("Signup successful!");
+    //res.send("Signup successful!");
 })}
 if (userType=='teacher'){
         db1.query(sqlUsers2, [name, password], (err, result) => {
@@ -141,7 +141,7 @@ if (userType=='teacher'){
             console.error("Error inserting into users table:", err);
             return res.status(500).send("Failed to insert into users table.");
         }})};
-        res.send("Signup successful!");
+        // res.send("Signup successful!");
     });
 app.post("/payment", (req, res) => {
         const { courseId, userId, trx, info, type, price } = req.body;

@@ -5,6 +5,7 @@ const phoneError = document.getElementById("phone-error");
 const transactionError = document.getElementById("transaction-error");
 const successMessage = document.getElementById("success-message");
 const price=localStorage.getItem('price')
+
 document.querySelector('#price').textContent = `${price}`;
 // Event listener for "Pay Now" button
 payNowButton.addEventListener("click", function () {
@@ -22,7 +23,7 @@ payNowButton.addEventListener("click", function () {
 
   // Check if courseId and userId are available
   if (!courseId || !userId) {
-      alert("Missing course ID or user ID in local storage.");
+      alert("Please log in first");
       return;
   }
 
@@ -50,7 +51,6 @@ payNowButton.addEventListener("click", function () {
     trx: transactionId,
     info: phoneNumber,
     type: "Bkash",
-    price: price,
   };
 
   console.log("Payment Data:", paymentData); // Log payment data for debugging

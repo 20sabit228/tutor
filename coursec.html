@@ -1,31 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/coursec.css">
+    <link rel="stylesheet" href="./styles/coursec.css">
     <script src="./js/coursec.js" defer></script>
     <title>Course Content</title>
 </head>
-<body>
-    <div class="container">
-        <header>
-            <h1>Course Content</h1>
-        </header>
 
-        <div class="course-section">
-            <div class="course-card">
-                <h2>Course Name: <span id="course-name"></span></h2>
-                <div class="links">
-                    <p><strong>YouTube Link:</strong> <a id="youtube-link" href="#" target="_blank">Watch Video</a></p>
-                    <p><strong>Drive Link:</strong> <a id="drive-link" href="#" target="_blank">Access Resources</a></p>
-                    <p><strong>Google Form Link:</strong> <a id="google-form-link" href="#" target="_blank">Fill Form</a></p>
-                    <p><strong>Google Form Link(2nd):</strong> <a id="google-form-link2" href="#" target="_blank">Fill Form</a></p>
-                    <p><strong>Progress:</strong> <a id="progress" href="#" target="_blank">View your progress</a></p>
+<body>
+    <!-- Header Section -->
+    <div class="header">
+        <h1>Course Content</h1>
+    </div>
+
+    <!-- Course Section -->
+    <div class="course-section">
+        <h2>Course Overview</h2>
+        <div class="course-card">
+
+
+            <!-- Links -->
+            <div class="links">
+                <div class="form-group">
+                    <label><strong>YouTube Link:</strong></label>
+                    <a id="youtube-link" href="#" target="_blank" class="button">Watch Video</a>
+                </div>
+                <div class="form-group">
+                    <label><strong>Drive Link:</strong></label>
+                    <a id="drive-link" href="#" target="_blank" class="button">Access Resources</a>
+                </div>
+                <div class="form-group">
+                    <label><strong>Quiz-1:</strong></label>
+                    <a id="google-form-link" href="#" target="_blank" class="button">Fill Form</a>
+                </div>
+                <div class="form-group">
+                    <label><strong>Quiz-2:</strong></label>
+                    <a id="google-form-link2" href="#" target="_blank" class="button">Fill Form</a>
+                </div>
+                <div class="form-group">
+                    <label><strong>Progress:</strong></label>
+                    <a id="progress" href="#" target="_blank" class="button">View Your Progress</a>
                 </div>
             </div>
         </div>
     </div>
-
 </body>
+
 </html>

@@ -6,8 +6,6 @@
     <link rel="stylesheet" href="./styles/profile.css">
     <script src="./js/profile.js" defer></script>
     <title>Profile</title>
-    
-    
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -28,19 +26,21 @@
         .profile-field {
             margin: 10px 0;
         }
-        .logoutBtn {
+        .btn {
             display: block;
             width: 100%;
             padding: 10px;
-            background-color: #f44336;
+            background-color: #007bff;
             color: #fff;
             border: none;
             border-radius: 5px;
             text-align: center;
             cursor: pointer;
+            margin: 10px 0;
+            text-decoration: none;
         }
-        .logoutBtn:hover {
-            background-color: #d32f2f;
+        .btn:hover {
+            background-color: #007bff;
         }
     </style>
 </head>
@@ -51,10 +51,9 @@
         <div class="profile-field" id="emailField">Email: <span id="email"></span></div>
         <div class="profile-field" id="phoneField">Phone: <span id="phone"></span></div>
         <div class="profile-field" id="userTypeField">User Type: <span id="userType"></span></div>
-        <button class="logoutBtn" id="logoutBtn">Logout</button>
-        <a href="addcourse.html"><button id="addcourse">Add Course</button>
-        <a href="refund.html"><button id="refund">Refund</button>
+        <a href="#" class="btn" id="logoutBtn">Logout</a>
+        <a href="addcourse.html" class="btn" id="addcourse">Add Course</a>
+        <a href="refund.html" class="btn" id="refund">Refund</a>
     </div>
-
 </body>
 </html>

@@ -41,14 +41,17 @@ document.getElementById("signupForm").addEventListener("submit", function (event
         },
         body: JSON.stringify(signupData),
     })
+    
         .then((response) => {
             if (!response.ok) {
                 throw new Error("Failed to sign up.");
             }
             return response.text();
         })
+
         .then((message) => {
-            alert(message);
+            alert(message); // Display success message
+            window.location.href = "in.html"; // Redirect to index.html
         })
         .catch((error) => {
             console.error("Error:", error);

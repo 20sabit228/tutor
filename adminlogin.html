@@ -1,18 +1,25 @@
-<html>
-    <form id="loginForm">
-        <label for="pass">Admin Password:</label>
-        <input type="text" id="pass" name="pass"><br><br>
-        <button type="submit">Proceed</button>
-    </form>
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/adminlogin.css">
+    <script src="./js/adminlogin.js" defer></script>
+    <title>Admin Login</title>
+</head>
 
-<script>
- document.getElementById("loginForm").addEventListener("submit", async function(event) {
-    event.preventDefault(); // Prevent the form from submitting traditionally
+<body>
+    <div class="login-container">
+        <h2>Admin Login</h2>
+        <form id="loginForm">
+            <label for="pass">Admin Password</label>
+            <input type="password" id="pass" name="pass" placeholder="Enter the admin password" required>
 
-        const password = document.getElementById("pass").value;
-        if (password=='1234'){
-            window.location.href='admin.html'
-    }});
-</script>
+            <div class="error" id="error"></div>
+            <button type="submit">Proceed</button>
+        </form>
+    </div>
+</body>
+
 </html>
