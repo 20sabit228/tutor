@@ -125,7 +125,11 @@ app.post("/signup", (req, res) => {
             console.error("Error inserting data:", err);
             return res.status(500).send("Failed to insert data.");
         }
+<<<<<<< HEAD
        res.send("Signup successful!");
+=======
+        res.send("Signup successful!");
+>>>>>>> 7ee7d2faf628cfb0fa3059265bd6a71517e7f882
     });
 if (userType=='student'){
      db1.query(sqlUsers, [name, password], (err, result) => {
@@ -133,7 +137,10 @@ if (userType=='student'){
         console.error("Error inserting into users table:", err);
         return res.status(500).send("Failed to insert into users table.");
     }
+<<<<<<< HEAD
     //res.send("Signup successful!");
+=======
+>>>>>>> 7ee7d2faf628cfb0fa3059265bd6a71517e7f882
 })}
 if (userType=='teacher'){
         db1.query(sqlUsers2, [name, password], (err, result) => {
@@ -141,7 +148,10 @@ if (userType=='teacher'){
             console.error("Error inserting into users table:", err);
             return res.status(500).send("Failed to insert into users table.");
         }})};
+<<<<<<< HEAD
         // res.send("Signup successful!");
+=======
+>>>>>>> 7ee7d2faf628cfb0fa3059265bd6a71517e7f882
     });
 app.post("/payment", (req, res) => {
         const { courseId, userId, trx, info, type, price } = req.body;
@@ -341,6 +351,18 @@ app.delete('/admin/delete-course', async (req, res) => {
     try {
       // Assuming you are using SQL (e.g., MySQL)
       await db.query('DELETE FROM courses WHERE id = ?', [id]);
+      res.json({ success: true, message: 'Course deleted successfully' });
+    } catch (error) {
+      console.error('Error deleting course:', error);
+      res.status(500).json({ success: false, message: 'Error deleting course' });
+    }
+  });
+  //refund del
+  app.delete('/admin/delete-refund', async (req, res) => {
+    const { id } = req.body;
+    try {
+      // Assuming you are using SQL (e.g., MySQL)
+      await db.query('DELETE FROM refund WHERE id = ?', [id]);
       res.json({ success: true, message: 'Course deleted successfully' });
     } catch (error) {
       console.error('Error deleting course:', error);
