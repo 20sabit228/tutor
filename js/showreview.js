@@ -10,7 +10,7 @@
    })
    .then((reviews) => {
      const reviewsContainer = document.getElementById("reviewsContainer");
-     reviewsContainer.innerHTML = ""; // Clear any existing content
+     reviewsContainer.innerHTML = " "; // Clear any existing content
  
      if (reviews.length === 0) {
        reviewsContainer.innerHTML = `<p class="no-reviews">No reviews available for this course.</p>`;

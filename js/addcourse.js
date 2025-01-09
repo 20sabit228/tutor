@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const description = document.getElementById("description").value.trim();
         const rating = 0;
         const price = parseFloat(document.getElementById("price").value);
-        const instructor = document.getElementById("instructor").value.trim();
+        const instructor = localStorage.getItem('username')
         const playlist = document.getElementById("playlist").value.trim();
         const material = document.getElementById("material").value.trim();
         const exam1 = document.getElementById("exam1").value.trim();
@@ -52,6 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then((message) => {
             alert(message);
+            window.location.href = "index.html"
         })
         .catch((error) => {
             console.error("Error:", error);
