@@ -1,4 +1,4 @@
-/* Resetting default styles for a clean slate */
+Resetting default styles for a clean slate
 * {
     margin: 0;
     padding: 0;
@@ -20,7 +20,32 @@ body {
     text-align: center;
     padding: 20px;
 }
+.summary-section {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+}
 
+#summary-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+#summary-table th, #summary-table td {
+    padding: 8px 12px;
+    text-align: center;
+}
+
+#summary-table th {
+    background-color: #007bff;
+    color: white;
+}
+
+#summary-table td {
+    background-color: #fefefe;
+}
 h1 {
     font-size: 2rem;
 }

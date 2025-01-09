@@ -360,7 +360,37 @@ app.delete('/admin/delete-course', async (req, res) => {
       res.status(500).json({ success: false, message: 'Error deleting user' });
     }
   });
+  //summary
+//   app.get('/admin/summary', async (req, res) => {
+//     try {
+//       const [totalUsersResult] = await db.query('SELECT COUNT(*) AS total FROM customers');
+//       const [totalCoursesResult] = await db.query('SELECT COUNT(*) AS total FROM courses');
+//       const [totalPaymentResult] = await db.query('SELECT SUM(price) AS total FROM payment WHERE approval = 1');
   
+//       console.log('Total Users Result:', totalUsersResult);
+//       console.log('Total Courses Result:', totalCoursesResult);
+//       console.log('Total Payment Result:', totalPaymentResult);
+  
+//       const totalUsers = totalUsersResult.total || 0;
+//       const totalCourses = totalCoursesResult.total || 0;
+//       const totalPayment = totalPaymentResult.total || 0;
+  
+//       res.json({
+//         success: true,
+//         data: {
+//           totalUsers,
+//           totalCourses,
+//           totalPayment,
+//         },
+//       });
+//     } catch (error) {
+//       console.error('Error fetching summary:', error);
+//       res.status(500).json({ success: false, message: 'Error fetching summary' });
+//     }
+//   });
+  
+  
+
   // Similar routes for deleting payments and refunds
   // Example for approving a payment
 // Example for approving a payment

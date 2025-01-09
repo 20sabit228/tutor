@@ -1,5 +1,23 @@
 // Function to fetch and render data into tables
 //Function to fetch and render payment data
+// document.addEventListener('DOMContentLoaded', () => {
+// //   // Fetch summary data
+//   fetch('http://localhost:3000/admin/summary')
+//       .then(response => response.json())
+//       .then(data => {
+//           if (data.success) {
+//               const { totalUsers, totalCourses, totalPayment } = data.data;
+
+//               // Update the summary table
+//               document.getElementById('total-users').textContent = totalUsers;
+//               document.getElementById('total-courses').textContent = totalCourses;
+//               document.getElementById('total-payment').textContent = totalPayment;
+//           } else {
+//               console.error('Error fetching summary:', data.message);
+//           }
+//       })
+//       .catch(error => console.error('Error fetching summary:', error));
+// });
 async function fetchData1(endpoint, tableId) {
   console.log(`Fetching data for: ${endpoint}`);
 

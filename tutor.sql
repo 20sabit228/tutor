@@ -39,6 +39,7 @@ CREATE TABLE review (
     id INT AUTO_INCREMENT PRIMARY KEY,
     course_title VARCHAR(255) NOT NULL,
     review TEXT NOT NULL,
+    username VARCHAR(255),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 CREATE TABLE refund (

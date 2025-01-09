@@ -51,6 +51,7 @@ payNowButton.addEventListener("click", function () {
       trx: transactionId,
       info: accountNumber,
       type: "Bank",
+      price: price,
     };
 
     console.log("Payment Data:", paymentData); // Log payment data for debugging
